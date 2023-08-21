@@ -5,28 +5,31 @@
 
 ## 2. Train ITGAN model
 ```
-example : 'python train_itgan.py --data --random_num --GPU_NUM --emb_dim --en_dim --d_dim --d_dropout --d_leaky --layer_type --hdim_factor --nhidden --likelihood_coef --gt --dt --lt --kinetic --kinetic_every_learn'
+Example : 'python train_itgan.py --data --random_num --GPU_NUM --emb_dim --en_dim --d_dim --d_dropout --d_leaky --layer_type --hdim_factor --nhidden --likelihood_coef --gt --dt --lt --kinetic --kinetic_every_learn'
+
+    Input:
+    
+    data: dataset name
+    random_num: random_seed to use
+    GPU_NUM: GPU number to use
+    emb_dim: $dim(h)$
+    en_dim: $n_{e(r)}$ = 2 -> "256,128", 3 -> "512,256,128" 
+    d_dim: $n_d$ = 2 -> "256,256", 3 -> "256,256,256" 
+    d_dropout: a
+    d_leaky: b
+    layer_type: $blend[M_i(z,t) = t], simblenddiv1[M_i(z,t) = sigmoid(FC(z⊕t))]$
+    hdim_factor: M
+    nhidden: K
+    likelihood_coef: $\gamma$
+    gt: $period_G$
+    dt: $period_D$
+    lt: $period_L$
+    kinetic: kinetic regularizer coef
+    kinetic_every_learn: if 0 apply kinetic regularizer every G likelihood training, else every all G training
+
+    Output:    
+    Model parameters saved to be saved is combination of each parameter
 ```
-
-data: dataset name
-random_num: random_seed to use
-GPU_NUM: GPU number to use
-emb_dim: $dim(h)$
-en_dim: $n_{e(r)}$ = 2 -> "256,128", 3 -> "512,256,128" 
-d_dim: $n_d$ = 2 -> "256,256", 3 -> "256,256,256" 
-d_dropout: a
-d_leaky: b
-layer_type: $blend[M_i(z,t) = t], simblenddiv1[M_i(z,t) = sigmoid(FC(z⊕t))]$
-hdim_factor: M
-nhidden: K
-likelihood_coef: $\gamma$
-gt: $period_G$
-dt: $period_D$
-lt: $period_L$
-kinetic: kinetic regularizer coef
-kinetic_every_learn: if 0 apply kinetic regularizer every G likelihood training, else every all G training
-
-the name of a file to be saved is combination of each parameter
 
 All parameter (except kinetic, kinetic_every_learn) is in Appendix D.
 kinetic: 0.1 for ITGAN(Q) of census and ITGAN(Q), ITGAN(L) for cabs, 1.0 for others  
@@ -41,14 +44,14 @@ kinetic_every_learn: 1 for census, 0 for others
 2. FBB Attack Score : Table 7, 10
 - FBB Attack Roc Auc scores of the trained model are printed.
 ```
-example : 'python test_fbb.py --data --GPU_NUM --file --subopt'
+Example : 'python test_fbb.py --data --GPU_NUM --file --subopt'
+
+    Input:
+    data: dataset name
+    GPU_NUM: GPU number to use
+    file: file name of model to use
+    subopt: return subopt fbb result
 ```
-
-data: dataset name
-GPU_NUM: GPU number to use
-file: file name of model to use
-subopt: return subopt fbb result
-
 ## 4. License
 
 Copyright (C) 2023 Samsung SDS Co., Ltd. All rights reserved.

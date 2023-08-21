@@ -32,8 +32,6 @@ Example : 'python train_itgan.py --data --random_num --GPU_NUM --emb_dim --en_di
 ```
 
 All parameter (except kinetic, kinetic_every_learn) is in Appendix D.
-kinetic: 0.1 for ITGAN(Q) of census and ITGAN(Q), ITGAN(L) for cabs, 1.0 for others  
-kinetic_every_learn: 1 for census, 0 for others
 
 ## 3. Test ITGAN model
 1. Check Model Score : Table 1, 2, 3, 4, 5, 6, 8, 9
